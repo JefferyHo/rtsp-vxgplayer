@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>测试video 视频资源获取与播放</title>
+  <script type="text/javascript" src="./lib/vxgplayer-1.8.40.min.js"></script>
+  <link rel="stylesheet" href="./lib/vxgplayer-1.8.40.min.css">
+</head>
+<body>
+  <div class="test-page">
+    <span> 测试video 视频资源获取与播放</span>
+    <div onclick="playVideo()" class="btn-vis">点击播放视频</div>
+    <div class="video-warp" v-show="videoWarpShow">
+      <div onclick="closeV()" class="close">x</div>
+      <div class="vxgplayer" id="vxg_media_player1" url="" aspect-ratio latency="10" 
+        autostart controls avsync nmf-src="./lib/media_player.nmf" nmf-path="media_player.nmf"
+        width="600" height="600">
+      </div>
+    </div>
+  </div>
+  <script>
+    function closeV() {
+      window.vxgplayer('vxg_media_player1').stop();
+    }
+
+    function playVideo() {
+      window.vxgplayer('vxg_media_player1').stop();
+      window.vxgplayer('vxg_media_player1').src("rtsp://admin:admin123@10.155.73.14/264/ch1/main/av_stream");
+      window.vxgplayer('vxg_media_player1').play();
+      //wowzaec2demo.streamlock.net/vod/mp4:BigBuckBunny_115k.mov");
+    }
+  </script>
+</body>
+</html>
